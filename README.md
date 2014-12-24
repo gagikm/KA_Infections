@@ -36,10 +36,13 @@ The function looks through the given list of users and finds the user who has a 
 
 <b>Example of Limited Infection
 
-Alvin has 10 students. Allen has 15 students. Ani has 2 students.  
+Alvin has 10 students. Allen has 15 students. Ani has 2 students.  Let's assume that all students have no students of their own and are coached by only one teacher.
 
-Infect 12 users using Limited Infection.
+Infect 30 users using Limited Infection.<br>
+Allen and his students add up to 16 users, which is the closest we can get to thirty using one class. After Allen and his students are infected, there are 14 users left to infect. Alvin and his students make 11 users while Ani and her students make up three users. We infect Alvin and his students and we are left with three users to infect. We infect Ani and her students and meet our goal of infecting 30 students. This is a case that worked out perfectly, but it does not usually go this way.
 
-First, we find that Alvin has the number of students closest to 12 and not more than 12. We infect Alvin and his 10 students. This leaves one more user to be infected. Since both of the remaining users have a number of students greater than one, we choose the user with least number of students, Ani. We infect Ani and we are done. The idea is to minimize the number of students who have a coach with a different version of the site.
+<italics>Infect 6 students using limited infection.</italics><br>
+Since Allen and Alvin both have more students than we want to infect, we leave them alone to attempt to avoid messing with the version consistency in their classrooms. Ani and her students make up three users, so we infect them and we are left with three more users to infect. Unfortunately, there is no way we can avoid classroom inconsistency in this case, but we still try to minimize the damage. We look for a user who has the least number of students and we infect that user. Then, we infect that user's students until we reach our goal or run out of uninfected students for that user. In the latter case, we repeat the process on the next user with the smallest number of students. In this example, all users except for Ani, Alvin, and Allen have zero students, so three of these uninfected users will be infected.
+
 
 
