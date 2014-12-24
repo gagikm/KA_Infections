@@ -45,6 +45,19 @@ Allen and his students add up to 16 users, which is the closest we can get to th
 Since Allen and Alvin both have more students than we want to infect, we leave them alone to attempt to avoid messing with the version consistency in their classrooms. Ani and her students make up three users, so we infect them and we are left with three more users to infect. Unfortunately, there is no way we can avoid classroom inconsistency in this case, but we still try to minimize the damage. We look for a user who has the least number of students and we infect that user. Then, we infect that user's students until we reach our goal or run out of uninfected students for that user. In the latter case, we repeat the process on the next user with the smallest number of students. In this example, all users except for Ani, Alvin, and Allen have zero students, so three of these uninfected users will be infected.
 
 <b>Testing</b><br>
-In the main.cpp file of this project, there are test cases in the main function. When the function is called, messages are displayed to show which users got infected.
+In the main.cpp file of this project, there are test cases in the main function. When the function is called, messages are displayed to show which users were infected.
+
+<b>Instructions</b>
+<br>
+Linux/Mac Terminal<br>
+<code>git clone git@github.com:gagikm/KA_Infections.git </code><br>
+<code>cd KA_Infections/KA_Infections</code><br>
+<code>g++ main.cpp</code><br>
+<code>./a.out</code><br>
+<br>
+Windows/Mac<br>
+Open this project using Visual Studio for Windows or Xcode for Mac. Build and run.
+
+
 
 
