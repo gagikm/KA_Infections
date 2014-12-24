@@ -23,15 +23,15 @@ The total infection function takes in the version number of the new deployment a
 First, we deploy the new version to the victim, then we move on to the users in its network. We recursively call this function on each of the victim’s students and each of the victim’s coaches. Before we make this recursive call on a user, we check to make sure that the user has not already been updated to the new version. 
 
 
-<b>Limited Infection<b>
+<b>Limited Infection (Exact) <b>
 
 void limited_infection(double new_version, int num_users, vector<user*> users)
 
 The limited infection function takes in the version number of the new deployment, the number of users we would like to infect, and a list of users. The third parameter allows us to run the infection on all users or a subgroup of users.
 
-The goal of this function is to infect the desired amount of users while still allowing all users in a classroom to use the same version whenever possible.
+The goal of this function is to infect the desired amount of users while still allowing all users in a classroom to use the same version whenever possible. This function will infect exactly the number of users we want as long as that number is not more than the number of users in our list.
 
-The function looks through the given list of users and finds the user who has a number of students closest to, but not more than, the number of users we want to infect (minus 1 for the teacher). We infect each of the user’s students with the new version, and we decrement the number of users left to infect by one with each new infection. We repeat this process, ignoring users that are already infected, until we reach our desired number of infections.  If the number of users we want to infect is larger than the size of our user list, all available users get infected and the function returns with exit code 1 to indicate that there are not enough users to infect.
+The function looks through the given list of users and finds the user who has a number of students closest to, but not more than, the number of users we want to infect (minus 1 for the teacher). We infect each of the user’s students with the new version, and we decrement the number of users left to infect by one with each new infection. We repeat this process, ignoring users that are already infected, until we reach our desired number of infections.  If the number of users we want to infect is larger than the size of our user list, the function returns with exit code 1 to indicate that there are not enough users to infect.
 
 
 <b>Example of Limited Infection
