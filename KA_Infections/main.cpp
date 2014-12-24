@@ -27,7 +27,7 @@ void total_infection(double new_version, user *victim){
     
     //Deploy new version to this user
     victim->cur_version = new_version;
-    cout<<"Infected "<<victim->name<<".\n";
+    cout<<"[TI]Infected "<<victim->name<<" with v"<<new_version<<".\n";
     
     //Call total infection on each uninfected student
     for(int i=0; i<victim->students.size(); i++){
@@ -59,8 +59,8 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
             if(best < copy.size()-1)
                 best++;
             if(best == copy.size()-1 && copy[best]->cur_version >= new_version){
-                cout<<"There are not enough users to infect.\n";
-                exit(EXIT_FAILURE);
+                cout<<"[LI]There are not enough users to infect.\n";
+                return;//exit(EXIT_FAILURE);
             }
         }
         
@@ -81,8 +81,7 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
             //deploy to the user with smallest number of students
             if(new_version > copy[best]->cur_version){
                 copy[best]->cur_version=new_version;
-                cout<<"Infected "<<copy[best]->name<<".\n";
-                num_users--;
+                cout<<"[LI]Infected "<<copy[best]->name<<" with v"<<new_version<<".\n";                num_users--;
             }
             return;
         }
@@ -106,17 +105,17 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
         if(new_version > copy[best]->cur_version){
             copy[best]->cur_version = new_version;
             num_users--;
-            cout<<"Infected "<<copy[best]->name<<".\n";
+            cout<<"[LI]Infected "<<copy[best]->name<<" with v"<<new_version<<".\n";
         }
         
         //deploy new version to best user's uninfected students
         for(int i=0; i<copy[best]->students.size(); i++){
             if(num_users == 0){
-                cout<<"Done with "<<copy[best]->name<<"'s students. \nNot all students were infected.";
+                cout<<"[LI]Done with "<<copy[best]->name<<"'s students. \nNot all students were infected.";
                 return;
             }
             if(new_version > copy[best]->students[i]->cur_version){
-                cout<<"Infected "<<copy[best]->name<<"'s student, "<<copy[best]->students[i]->name<<".\n";
+                cout<<"[LI]Infected "<<copy[best]->name<<"'s student, "<<copy[best]->students[i]->name<<" with v"<<new_version<<".\n";
                 copy[best]->students[i]->cur_version = new_version;
                 num_users--;
             }
@@ -220,10 +219,11 @@ int main(int argc, const char * argv[]) {
     KhanAcademyUsers.push_back(White);
     
     
-    //test limited_infectino and total_infection
-//    limited_infection(1.2, 12, KhanAcademyUsers);
+    //test limited_infection and total_infection
+
     total_infection(1.3, Michael);
-    
+    limited_infection(1.4, 10, KhanAcademyUsers);
+    cout<<'\n';
     for (int i=0; i<KhanAcademyUsers.size(); i++) {
         cout<<KhanAcademyUsers[i]->name<<": v"<<KhanAcademyUsers[i]->cur_version<<'\n';
     }
