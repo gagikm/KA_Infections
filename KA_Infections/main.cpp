@@ -130,7 +130,7 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
     
 }
 
-//auxiliarry function to assign students to teachers
+//auxiliary function to assign students to teachers
 void assign(user* student, user* coach){
     coach->students.push_back(student);
     student->coaches.push_back(coach);
@@ -219,11 +219,15 @@ int main(int argc, const char * argv[]) {
     KhanAcademyUsers.push_back(White);
     
     
+
     //test limited_infection and total_infection
 
     total_infection(1.3, Michael);
     limited_infection(1.4, 10, KhanAcademyUsers);
     cout<<'\n';
+
+    //Print out version number of every user
+
     for (int i=0; i<KhanAcademyUsers.size(); i++) {
         cout<<KhanAcademyUsers[i]->name<<": v"<<KhanAcademyUsers[i]->cur_version<<'\n';
     }
