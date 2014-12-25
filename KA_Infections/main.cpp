@@ -81,7 +81,8 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
             //deploy to the user with smallest number of students
             if(new_version > copy[best]->cur_version){
                 copy[best]->cur_version=new_version;
-                cout<<"[LI]Infected "<<copy[best]->name<<" with v"<<new_version<<".\n";                num_users--;
+                cout<<"[LI]Infected "<<copy[best]->name<<" with v"<<new_version<<".\n";
+                num_users--;
             }
             return;
         }
@@ -222,7 +223,7 @@ int main(int argc, const char * argv[]) {
 
     //test limited_infection and total_infection
 
-    total_infection(1.3, Michael);
+    total_infection(1.1, Michael);
     limited_infection(1.4, 10, KhanAcademyUsers);
     cout<<'\n';
 
