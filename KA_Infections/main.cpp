@@ -60,7 +60,7 @@ void limited_infection(double new_version, int num_users, vector<user*> user_db)
                 best++;
             if(best == copy.size()-1 && copy[best]->cur_version >= new_version){
                 cout<<"[LI]There are not enough users to infect.\n";
-                return;//exit(EXIT_FAILURE);
+                exit(EXIT_FAILURE);
             }
         }
         
